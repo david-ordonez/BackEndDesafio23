@@ -14,3 +14,5 @@ export class Productos {
     @Prop()
     foto: string;
 }
+
+export const ProductosSchema = SchemaFactory.createForClass(Productos);
