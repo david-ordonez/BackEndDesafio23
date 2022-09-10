@@ -16,18 +16,22 @@ export class ProductosService {
     }
 
     async getById(id: string){
-        const producto = this.productosModule.find({_id: id})
+        const producto = await this.productosModule.find({_id: id})
         return producto
     }
 
     async create(producto : AddProductoDto){
-        const productoCreated = this.productosModule.create(AddProductoDto);
+        const productoCreated = await this.productosModule.create(AddProductoDto);
         return productoCreated;
     }
 
     async update(producto : UpdateProductoDto){
-        const productoUpdate = this.productosModule.findByIdAndUpdate(producto._id, producto);
+        const productoUpdate = await this.productosModule.findByIdAndUpdate(producto._id, producto);
         return productoUpdate;
+    }
+
+    async delete(id: string){
+        await this.productosModule.deleteOne({_id: id});
     }
   
 }
